@@ -88,23 +88,26 @@ uint32_t workc,workb,worka;
 static void vHogeTask( void *pvParameters )
 {
 	portTickType xLastWakeTime;
-	uint32_t tStep = 1000;
+	volatile float work;
+	int i;
+
+	uint32_t tStep = 10000;	// 10秒毎に繰り返す。
 	xLastWakeTime = xTaskGetTickCount ();
 	for( ;; ){
-		vTaskDelayUntil(&xLastWakeTime, tStep/portTICK_RATE_MS);
 //		指定した時間までタスクを遅延させる。
 //		一定周期でタスクを起動するのに使う
-//		単なる Delay なら vTaskDelay(1000 / portTICK_RATE_MS);
+//		単なる Delay なら vTaskDelay(tStep / portTICK_RATE_MS);
 
 
-	//	xTaskResumeAll();
-/*
-		fnk1 = 0.0f;
+	//	vTaskSuspendAll();
+		printf("Calculation stat\n");
+		work = 0.0f;
 		for (i = 1;i < 50000000;i += 4) {
-			fnk1 += 4.0f / (float)(i) - 4.0f / (float)(i + 2);
+			work += 4.0f / (float)(i) - 4.0f / (float)(i + 2);
 		}
-		printf("pi: %f\n",fnk1);
-*/
+		printf("pi: %f\n",work);
+	//	xTaskResumeAll();
+		vTaskDelayUntil(&xLastWakeTime, tStep/portTICK_RATE_MS);
 	}
 
 }

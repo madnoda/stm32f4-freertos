@@ -44,31 +44,6 @@ void Set_System(void)
 
 }
 
-
-/**************************************************************************/
-/*! 
-    @brief	Configures the LED on STM3220G-EVAL.
-	@param	None.
-    @retval	None.
-*/
-/**************************************************************************/
-void LED_Configuration(void)
-{
-}
-
-
-/**************************************************************************/
-/*! 
-    @brief	Configures the KEY-Input on STM3220G-EVAL.
-	@param	None.
-    @retval	None.
-*/
-/**************************************************************************/
-void KEY_Configuration(void)
-{
-}
-
-
 /**************************************************************************/
 /*! 
     @brief	Configures Vector Table base location.

@@ -49,7 +49,6 @@
 /* USART Definition */
 #define UART_BUFSIZE		256
 #define UART_BAUDLATE		38400UL
-#define UART_DEFAULT_NUM	2 /*USART2 PA2,PA3 default use*/
 
 /* General Definition */
 #define countof(a)   (sizeof(a) / sizeof(*(a)))

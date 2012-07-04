@@ -19,11 +19,12 @@ USING_FPU		= -mfloat-abi=softfp  -mfpu=fpv4-sp-d16
 # Apprication Version
 APP_VER = W.I.P
 
-SUBMODEL		= STM32F407VGT6
+SUBMODEL		= STM32F4XX
 
 MPU_DENSITY		= STM32F4xx
 HSE_CLOCK 		= 8000000
 PERIF_DRIVER    = USE_STDPERIPH_DRIVER
+UART_DEFAULT_NUM	= 1
 
 # Use FreeRTOS?
 #OS_SUPPORT		= BARE_METAL
@@ -36,12 +37,13 @@ FREERTOS_COM = $(FREERTOS_DIR)/Demo/Common/include
 DEFZ = $(EVAL_BOARD)  $(MPU_DENSITY)  $(PERIF_DRIVER)    $(VECTOR_START) $(ROM_START)		\
 	   $(USE_DISPLAY) $(USE_FONTSIZE) $(USE_TOUCH_SENCE) $(USE_LCD_SPI)	 $(USE_JPEG_LIB)	\
 	   $(OS_SUPPORT)  $(USE_SPI_DMA)  $(USE_EXT_SRAM)    $(SUBMODEL)	 $(USE_KANJI)
-SYNTHESIS_DEFS	= $(addprefix -D,$(DEFZ)) 							\
-				 -DPACK_STRUCT_END=__attribute\(\(packed\)\) 		\
-				 -DALIGN_STRUCT_END=__attribute\(\(aligned\(4\)\)\) \
+SYNTHESIS_DEFS	= $(addprefix -D,$(DEFZ)) 								\
+				 -DPACK_STRUCT_END=__attribute\(\(packed\)\) 			\
+				 -DALIGN_STRUCT_END=__attribute\(\(aligned\(4\)\)\) 	\
 				 -DMPU_SUBMODEL=\"$(SUBMODEL)\"						\
-				 -DAPP_VERSION=\"$(APP_VER)\"						\
-				 -DHSE_VALUE=$(HSE_CLOCK)UL 
+				 -DAPP_VERSION=\"$(APP_VER)\"							\
+				 -DHSE_VALUE=$(HSE_CLOCK)UL 							\
+				 -DUART_DEFAULT_NUM=$(UART_DEFAULT_NUM) 
 
 # TARGET definition
 TARGET 		= main
