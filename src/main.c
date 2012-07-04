@@ -100,7 +100,7 @@ static void vHogeTask( void *pvParameters )
 
 
 	//	vTaskSuspendAll();
-		printf("Calculation stat\n");
+		printf("Calculation start\n");
 		work = 0.0f;
 		for (i = 1;i < 50000000;i += 4) {
 			work += 4.0f / (float)(i) - 4.0f / (float)(i + 2);
